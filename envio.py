@@ -10,7 +10,7 @@ from string import Template
 
 # CONSTANTES Y CONFIGURACIONES
 # Tiempos
-HORA_EJECUCION = 10  # 9 a.m.
+HORA_EJECUCION = 9  # 9 a.m.
 INTERVALO_ESPERA = 3600  # 1 hora
 
 # Configuración de la base de datos
