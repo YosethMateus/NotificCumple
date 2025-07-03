@@ -10,7 +10,7 @@ from string import Template
 
 # CONSTANTES Y CONFIGURACIONES
 # Tiempos
-HORA_EJECUCION = 9  # 9 a.m.
+HORA_EJECUCION = 10  # 9 a.m.
 INTERVALO_ESPERA = 3600  # 1 hora
 
 # Configuración de la base de datos
@@ -63,7 +63,7 @@ Disfruta tu día :)
     except Exception as e:
         print("❌ Error al enviar el correo:", e)
 
-
+# Funcion para verificar quienes cumplen años hoy
 def verificar_cumpleaños():
   try:
     conexion = mysql.connector.connect(**DB_CONFIG)
@@ -78,9 +78,9 @@ def verificar_cumpleaños():
       if resultados:
                 print("🎉 Cumpleañeros de hoy:")
                 for fila in resultados:
-                    nombre = f"{fila[0]} {fila[1]}"
+                    nombre = f"{fila[1]} {fila[2]}"
                     correo = fila[4]
-                    print(f"🎂 {nombre} - {fila[2]} - {correo}")
+                    print(f"🎂 {nombre} - {correo}")
                     enviar_correo(correo, nombre)
       else:
           print("🤷‍♂️ No hay cumpleaños hoy.")
@@ -94,7 +94,7 @@ def verificar_cumpleaños():
   except Exception as ex:
       print("❌ Otro error ocurrió:", ex)
 
-
+# Función principal que se ejecuta cada hora
 def main():
     ultima_ejecucion = None
 
